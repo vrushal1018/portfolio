@@ -1,14 +1,26 @@
 import './Navbar.css';
+import { useState } from 'react';
 
 export default function Navbar() {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
+
   return (
     <nav className="navbar">
       <div className="nav-logo">Vrushal.dev</div>
-      <div className="nav-links">
-        <a href="#about">About</a>
-        <a href="#skills">Skills</a>
-        <a href="#projects">Projects</a>
-        <a href="#contact">Contact</a>
+
+      <button className="menu-toggle" onClick={toggleMenu}>
+        ☰
+      </button>
+
+      <div className={`nav-links ${isOpen ? 'active' : ''}`}>
+        <a href="#about" onClick={() => setIsOpen(false)}>About</a>
+        <a href="#skills" onClick={() => setIsOpen(false)}>Skills</a>
+        <a href="#projects" onClick={() => setIsOpen(false)}>Projects</a>
+        <a href="#contact" onClick={() => setIsOpen(false)}>Contact</a>
       </div>
     </nav>
   );
