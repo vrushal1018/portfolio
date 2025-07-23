@@ -9,7 +9,7 @@ export default function Projects() {
       technologies: ["React","tailwind","Rapid apis"],
       github: "https://github.com/vrushal1018/socialmediadashboard",
       demo: " https://socialmediadashboard-roan.vercel.app",
-      image: "/images/movie-booking.png"
+      image: "https://www.ncsc.gov.uk/images/library/iStock-1704413556.jpg"
     },
     {
       title: "NUTS",
@@ -17,7 +17,7 @@ export default function Projects() {
       technologies: ["React", "CSS3", "JavaScript"],
       github: "https://github.com/yourusername/portfolio",
       demo: " https://nuts-eta.vercel.app",
-      image: "/images/portfolio.png"
+      image: "https://png.pngtree.com/template/20200212/ourmid/pngtree-line-art-oak-nut-logo-design-minimalist-vector-label-emblem-illustration-image_350718.jpg"
     },
     // {
     //   title: "E-commerce Dashboard",

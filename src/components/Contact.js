@@ -8,6 +8,7 @@ export default function Contact() {
     message: ''
   });
   const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -17,13 +18,32 @@ export default function Contact() {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Here you would typically handle the form submission
-    // For now, we'll just show a success message
-    setSubmitted(true);
-    setTimeout(() => setSubmitted(false), 3000);
-    setFormData({ name: '', email: '', message: '' });
+    setSubmitted(false);
+    setError(false);
+
+    try {
+      const response = await fetch("https://formspree.io/f/xkgzngnl", {
+        method: "POST",
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        setSubmitted(true);
+        setFormData({ name: '', email: '', message: '' });
+        setTimeout(() => setSubmitted(false), 3000);
+      } else {
+        throw new Error("Form submission failed");
+      }
+    } catch (err) {
+      console.error(err);
+      setError(true);
+    }
   };
 
   return (
@@ -73,9 +93,16 @@ export default function Contact() {
           <button type="submit" className="submit-btn">
             Send Message
           </button>
+
           {submitted && (
             <div className="success-message">
-              Thank you! Your message has been sent successfully.
+              ✅ Thank you! Your message has been sent.
+            </div>
+          )}
+
+          {error && (
+            <div className="error-message">
+              ❌ Oops! Something went wrong. Please try again later.
             </div>
           )}
         </form>
@@ -83,4 +110,3 @@ export default function Contact() {
     </section>
   );
 }
-  

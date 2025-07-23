@@ -48,7 +48,7 @@ export default function Hero() {
         
         <div className="hero-buttons">
           <a href="#projects" className="btn primary-btn">View Projects</a>
-          <a href="/myresume.pdf" download className="btn secondary-btn">Download Resume</a>
+          <a href="/Vrushal-vijay-Pachupate-resume.pdf" download className="btn secondary-btn">Download Resume</a>
         </div>
 
         <div className="social-links">
